@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    background: rgba(194, 236, 201, 0.95);
+background: -webkit-linear-gradient(46deg, rgba(194, 236, 201, 0.95) 0%, #eeeeee 100%);
+background: linear-gradient(46deg, rgba(194, 236, 201, 0.95) 0%, #eeeeee 100%);
+}
