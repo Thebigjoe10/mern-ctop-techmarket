@@ -11,7 +11,7 @@ export default function Header() {
             <span className="text-green-700">TechMarket</span>
           </h1>
         </Link>
-        <form className="bg-slate-100 p-3 rounded-lg flex items-center ">
+        <form className="bg-white p-3 rounded-lg flex items-center ">
           <input
             type="text"
             placeholder="Search..."

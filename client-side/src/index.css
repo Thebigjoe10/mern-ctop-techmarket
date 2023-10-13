@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background: rgba(194, 236, 201, 0.95);
-background: -webkit-linear-gradient(46deg, rgba(194, 236, 201, 0.95) 0%, #eeeeee 100%);
-background: linear-gradient(46deg, rgba(194, 236, 201, 0.95) 0%, #eeeeee 100%);
+body {
+  background: rgb(208, 237, 213);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(208, 237, 213, 1) 0%,
+    rgba(237, 247, 238, 1) 40%,
+    rgba(237, 247, 238, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(208, 237, 213, 1) 0%,
+    rgba(237, 247, 238, 1) 40%,
+    rgba(237, 247, 238, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(208, 237, 213, 1) 0%,
+    rgba(237, 247, 238, 1) 40%,
+    rgba(237, 247, 238, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d0edd5",endColorstr="#edf7ee",GradientType=1);
 }
