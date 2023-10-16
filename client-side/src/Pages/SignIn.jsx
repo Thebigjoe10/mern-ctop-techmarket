@@ -3,21 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   signInStart,
-  signInSucess,
+  signInSuccess,
   signInFailure,
 } from "../redux/user/user.Slice";
 
 export default function SignIn() {
-  const [formData, setformData] = useState({});
-  const { loading, error } = useSelector((state) => state.user);
+  const [formData, setFormData] = useState({});
+  const { loading, error } = useSelector((state) => state.user); // Make sure state.user is the correct path
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleChange = (e) => {
-    setformData({
+    setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,7 +37,7 @@ export default function SignIn() {
         dispatch(signInFailure(data.message));
         return;
       }
-      dispatch(signInSucess(data));
+      dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
       dispatch(signInFailure(error.message));
