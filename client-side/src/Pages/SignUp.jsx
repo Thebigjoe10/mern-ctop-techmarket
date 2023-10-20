@@ -1,19 +1,51 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../Components/OAuth";
 
 export default function SignUp() {
-  const [formData, setformData] = useState({});
+  const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
-    setformData({
+    setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
+
+  const validateForm = () => {
+    // Basic client-side validation
+    if (!formData.email || !formData.password) {
+      setError("Email and password are required");
+      return false;
+    }
+    if (!isValidEmail(formData.email)) {
+      setError("Invalid email address");
+      return false;
+    }
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return false;
+    }
+    setError(null);
+    return true;
+  };
+
+  const isValidEmail = (email) => {
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       setLoading(true);
       const res = await fetch("/api/oauth/signup", {
@@ -45,20 +77,13 @@ export default function SignUp() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
-          placeholder="username"
-          className="border p-3 rounded-lg focus:outline-none"
-          id="username"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
           placeholder="email"
           className="border p-3 rounded-lg focus:outline-none"
           id="email"
           onChange={handleChange}
         />
         <input
-          type="text"
+          type="password"
           placeholder="password"
           className="border p-3 rounded-lg focus:outline-none"
           id="password"
@@ -70,10 +95,11 @@ export default function SignUp() {
         >
           {loading ? "loading..." : "Sign Up"}
         </button>
+        <OAuth/>
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
-        <Link to={"/sign-in"}>
+        <Link to="/sign-in">
           <span className="text-green-700">Sign in</span>
         </Link>
       </div>

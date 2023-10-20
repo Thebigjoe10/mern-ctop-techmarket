@@ -16,10 +16,20 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    avatar:{
+      type: String,
+      default:"https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+    },
+    stores: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Store", // Reference to the Store model
+      },
+    ],
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema)
+const User = mongoose.model("User", userSchema);
 
 export default User;

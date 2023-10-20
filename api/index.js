@@ -27,10 +27,15 @@ app.use("/api/oauth", oauthRouter);
 //middleware 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
-  const message = err.message || "internal Server Error";
+  const message = err.message || "Internal Server Error";
+
+  // Log the error for debugging purposes
+  console.error(err);
+
   return res.status(statusCode).json({
     success: false,
     statusCode,
     message,
-  })
+  });
 });
+
