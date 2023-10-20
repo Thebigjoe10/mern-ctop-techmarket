@@ -13,28 +13,30 @@ export default function SignUp() {
       ...formData,
       [e.target.id]: e.target.value,
     });
+    setError(null); // Clear the error when the user makes changes
   };
 
   const validateForm = () => {
-    // Basic client-side validation
-    if (!formData.email || !formData.password) {
-      setError("Email and password are required");
+    if (!formData.username || !formData.email || !formData.password) {
+      setError("Username, email, and password are required");
       return false;
     }
+
     if (!isValidEmail(formData.email)) {
       setError("Invalid email address");
       return false;
     }
+
     if (formData.password.length < 6) {
       setError("Password must be at least 6 characters long");
       return false;
     }
-    setError(null);
+
+    setError(null); // Clear the error if the form is valid
     return true;
   };
 
   const isValidEmail = (email) => {
-    // Basic email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -77,11 +79,20 @@ export default function SignUp() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="text"
+          placeholder="username"
+          className="border p-3 rounded-lg focus:outline-none"
+          id="username"
+          onChange={handleChange}
+        />
+
+        <input
+          type="text"
           placeholder="email"
           className="border p-3 rounded-lg focus:outline-none"
           id="email"
           onChange={handleChange}
         />
+
         <input
           type="password"
           placeholder="password"
@@ -89,13 +100,15 @@ export default function SignUp() {
           id="password"
           onChange={handleChange}
         />
+
         <button
           disabled={loading}
           className="bg-green-500 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80"
         >
           {loading ? "loading..." : "Sign Up"}
         </button>
-        <OAuth/>
+
+        <OAuth />
       </form>
       <div className="flex gap-2 mt-5">
         <p>Have an account?</p>
