@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
   {
@@ -18,18 +18,12 @@ const userSchema = new mongoose.Schema(
     },
     avatar:{
       type: String,
-      default:"https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+      default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
     },
-    stores: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Store", // Reference to the Store model
-      },
-    ],
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 export default User;
