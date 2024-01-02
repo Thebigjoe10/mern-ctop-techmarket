@@ -46,7 +46,7 @@ const navigate = useNavigate()
     <button
       onClick={handleGoogleClick}
       type="button"
-      className="border-solid border-2 border-slate-600 p-3 bg-green-50 rounded-lg flex items-center justify-center hover:opacity-95"
+      className="border-solid border-2 border-slate-600 p-3 bg-slate-50 rounded-lg flex items-center justify-center hover:opacity-95"
     >
       <img
         width="24"
