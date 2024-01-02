@@ -247,7 +247,7 @@ export default function CreateListing() {
                 type='number'
                 id='bedrooms'
                 min='1'
-                max='10'
+                max='100'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
                 onChange={handleChange}
@@ -260,7 +260,7 @@ export default function CreateListing() {
                 type='number'
                 id='bathrooms'
                 min='1'
-                max='10'
+                max='100'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
                 onChange={handleChange}
